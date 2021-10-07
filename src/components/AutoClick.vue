@@ -1,7 +1,7 @@
 <template>
   
-<button class="upgrades" @click="autoClick" :disabled="clicks<cost">{{name}} ({{cps}} ) 
-    0.1 coin trickle{{cost}}</button>
+<button class="upgrades" @click="autoClick" :disabled="clicks<cost">{{name}} ({{cps}} cps) 
+   {{cost}} coins</button>
 
 <!-- <img src="bank_icon.png"> -->
 
@@ -24,16 +24,19 @@ export default {
 .upgrades{
     border-radius: 8px;
     padding: 15px;
-    font-size: 18px;
-    margin-top: 240px;
+    font-size: 25px;
+    margin-top: 210px;
     margin-bottom: 300px;
     margin-left:15px;
-    color:rgb(65, 34, 124);
-    background-color: rgb(243, 140, 71);
-    border: 2px solid #6e0044;
+    color:rgb(120, 0, 240);
+    background-color: rgb(238, 158, 104);
+    border: 4px dotted #6e0044; 
+    cursor: pointer;
 }
 .upgrades:disabled{
 background: #dddddd;
+opacity:50%;
+cursor: not-allowed; 
     }
 
 </style>

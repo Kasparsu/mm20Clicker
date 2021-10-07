@@ -45,6 +45,6 @@ export default {
 <style>
 html, body {
   background-color: blanchedalmond;
-  background-size: cover;
+
 }
 </style>
