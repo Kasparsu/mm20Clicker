@@ -7,7 +7,7 @@
         
 
 
-        
+        <h5 class="is-size-3">Coin 收刺猬 COLLECT<img src="https://previews.dropbox.com/p/thumb/ABWvrpmtBT5F1PxAIFdhINBA6aFA6fw4lhc0II4LXzX_AJuG_TqEQm2pglXRBzTEhurzqaK4qH9bNaHVl5nhdy0oz7ZWS6JKm35ygYqmrCwikHtBW89tzNiDG00nVzieaNsD9PgHIKKQk0EU2iol8dBl-o2SqkVItuIFDR8xbkFRbvLoz4pu4_fbTPDsJrgnomoGKdLYadCX_e4GhXRW4MZKl3wJXS8Oizinh5QKH1XRCA7bDyBpHO4tchzwqZejc4vtWo4ib_LX107IIIhUd4fErUtxi823hGtjoRjTJg4BIkc62ZelS4mPvaIKxyN-xZUtzNVCelyTi_cYvrM-Y_G6OpHPDf4IVznY7hPeLet3tg/p.png" alt="#1" width="40" height="50"></h5>  
         <h4 class="is-size-4">You have {{displayClicks}} coins!</h4>  
         <auto-click 
         v-for="(auto,index) in autoClickers"
@@ -96,11 +96,16 @@ components: {  AutoClick },
 }
 h4.is-size-4{
     left:20px;
-    bottom:300px;
+    bottom:340px;
     position: relative;
     color:rgb(0, 0, 255);
     border: 2px solid rgb(231, 198, 198);
     
+}
+h5.is-size-3{
+    top:2px;
+    position:absolute;
+    color:red;
 }
 
 </style>

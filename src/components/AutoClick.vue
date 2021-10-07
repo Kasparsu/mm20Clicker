@@ -34,7 +34,7 @@ export default {
     padding: 15px;
     font-size: 22px;
     margin-top: 100px;
-    margin-bottom: 300px;
+    margin-bottom: 0px;
     margin-left:15px;
     color:rgb(120, 0, 240);
     background-color: rgb(238, 158, 104);
