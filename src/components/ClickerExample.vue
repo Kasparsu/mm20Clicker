@@ -1,11 +1,15 @@
 <template>
   
   <section class="section">
+        <button class="button is-warning is-large" @click="clicks++" @click.prevent="
+        playSound('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a')" >
+        <img src="https://previews.dropbox.com/p/thumb/ABQZgIDq4djH3Kv6Qg2qAJhyEZtoMabSCty3GlKHymEHaWG8Iyrz4FlsJLljW96kYfYgljaZvlfejm_Yv4MjgJ7vAObw0s6VUY_Y0bruxhCJJE17_40ar7_oRMSFI8dAHDDP0EHZXjKt6bow_ijRmWvSmf-Q5iubIT-TPa5PJMjgzpJnfbs8w3t5u05f4rr6QYcfKwkYvlK7U9ar_GtZePOlpWginae3SjSTNZxx8jN3nw6nt2HhPgqT5JK2PvyxfG-CFxaO4wrJpgS4wEGcCSdEoOqBCMx-fMqUvJHbgmrZkiy6V9WBOhbJ5BV5EW39M9OcWlxAbaUvBYtG_q41mbKn7HPjgUmyYP4Vz4zrhe1LdA/p.png" alt="dog" width="200" height="200"></button>
+        
 
-        <button class="button is-warning is-large" @click="clicks++" ><img src="https://previews.dropbox.com/p/thumb/ABQZgIDq4djH3Kv6Qg2qAJhyEZtoMabSCty3GlKHymEHaWG8Iyrz4FlsJLljW96kYfYgljaZvlfejm_Yv4MjgJ7vAObw0s6VUY_Y0bruxhCJJE17_40ar7_oRMSFI8dAHDDP0EHZXjKt6bow_ijRmWvSmf-Q5iubIT-TPa5PJMjgzpJnfbs8w3t5u05f4rr6QYcfKwkYvlK7U9ar_GtZePOlpWginae3SjSTNZxx8jN3nw6nt2HhPgqT5JK2PvyxfG-CFxaO4wrJpgS4wEGcCSdEoOqBCMx-fMqUvJHbgmrZkiy6V9WBOhbJ5BV5EW39M9OcWlxAbaUvBYtG_q41mbKn7HPjgUmyYP4Vz4zrhe1LdA/p.png" alt="dog" width="200" height="200"></button>
+
+        
         <h4 class="is-size-4">You have {{displayClicks}} coins!</h4>  
         <auto-click 
-
         v-for="(auto,index) in autoClickers"
         :key="index"
         :name="auto.name"
@@ -15,6 +19,7 @@
         :clicks="clicks"
         @clicked="autoClick">
         </auto-click>
+
   </section>
 
 
@@ -41,14 +46,14 @@ components: {  AutoClick },
     },
     data(){
         return{
-            clicks: 1000,
+            clicks: 400,
             cps: 0,
             cost: 10,
             autoClickers:[
                 {name: 'Boost', cost: 10, cps:0.1},
                 {name: 'Coin trickle', cost: 100, cps:1.25},
                 {name: 'Mining', cost: 700, cps:100},
-                {name: 'Bank', cost: 1200, cps:400},
+                {name: 'Bank', cost: 1200, cps:200},
                 
 
             ]
@@ -59,10 +64,14 @@ components: {  AutoClick },
                 this.clicks -= this.autoClickers[index].cost;
                 this.cps += this.autoClickers[index].cps;
                 this.autoClickers[index].cost += Math.ceil(this.autoClickers[index].cost/10);
-
-
-         }
-        
+         },
+          
+    playSound (sound) {
+      if(sound) {
+        var audio = new Audio(sound);
+        audio.play();
+      }
+    }  
 
     },
     computed: {

@@ -1,6 +1,6 @@
 <template>
   
-<button class="upgrades" @click="autoClick" :disabled="clicks<cost">{{name}} ({{cps}} cps) 
+<button class="upgrades" @click.prevent="playSound('http://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3')" @click="autoClick" :disabled="clicks<cost">{{name}} ({{cps}} cps) 
    {{cost}} coins</button>
 
 <!-- <img src="bank_icon.png"> -->
@@ -15,8 +15,16 @@ export default {
     methods: {
         autoClick(){
             this.$emit('clicked', this.index);
-        }
+
+
+        },
+            playSound (sound) {
+      if(sound) {
+        var audio = new Audio(sound);
+        audio.play();
+      }
     }
+}
 }
 </script>
 
