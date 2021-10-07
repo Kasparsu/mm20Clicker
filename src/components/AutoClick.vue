@@ -24,8 +24,8 @@ export default {
 .upgrades{
     border-radius: 8px;
     padding: 15px;
-    font-size: 25px;
-    margin-top: 210px;
+    font-size: 22px;
+    margin-top: 100px;
     margin-bottom: 300px;
     margin-left:15px;
     color:rgb(120, 0, 240);
