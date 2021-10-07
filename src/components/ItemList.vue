@@ -1,18 +1,18 @@
 <template>
-  <div>
-        <h1>{{ title }}</h1>
+<div>
+  <h1>{{ title }}</h1>
         <ul>
-            <li v-for="item in items" :key="tag+item.id">
-                <input type="checkbox" v-model="item.isDone">
-                {{item.name}}
+            <li v-for="item in items" :key="key=tag=item.id+item.id">
+            <input type="checkbox" v-model="item.isDone">
+            {{item.name}}
             </li>
         </ul>
-  </div>
+</div>
 </template>
 
 <script>
 export default {
-    props: ['items', 'title', 'tag']
+    props:['items', 'title', 'tag']
 }
 </script>
 

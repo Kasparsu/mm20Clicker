@@ -1,6 +1,10 @@
 <template>
 <div>
   <div class="tabs is-centered is-large">
+
+
+
+    
     <ul>
       <li v-for="(item,index) in items"
       :key="index"
@@ -21,7 +25,6 @@
 import ClickerExample from './ClickerExample.vue'
 import ModalExample from './ModalExample.vue'
 import ToDoExample from './ToDoExample.vue'
-
 export default {
   components: { ModalExample, ToDoExample, ClickerExample},
     data(){
@@ -37,6 +40,11 @@ export default {
 }
 </script>
 
-<style>
 
+
+<style>
+html, body {
+  background-color: blanchedalmond;
+  background-size: cover;
+}
 </style>
