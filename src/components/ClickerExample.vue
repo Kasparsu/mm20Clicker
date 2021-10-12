@@ -38,7 +38,7 @@
 import Clickrate from './Clickrate.vue';
 import AutoClick from './AutoClick.vue';
 export default {
-  components: { AutoClick, Clickrate },
+  components: { Clickrate, AutoClick },
     mounted(){
         setInterval(()=>{
             this.clicks += this.cps;   
@@ -64,11 +64,8 @@ export default {
                 {name: 'Mother of God of Deleters', cost: 100000000000, clickrate: 0, cps:1000000000},
                 {name: 'Your Angry Mother', cost: 1000000000000, clickrate: 0, cps:10000000000},
                 {name: 'Stronger Clicks', cost: 100, clickrate: 0.2, cps: 0.2},
-                ],
-        
-            summoner: [
                 {name: 'Summoner style', cost: 100, clickrate: -0.5, cps: 3}
-            ]
+                ],
         }
     },
     methods: {
