@@ -2,9 +2,6 @@
 <div>
   <div class="tabs is-centered is-large">
 
-
-
-    
     <ul>
       <li v-for="(item,index) in items"
       :key="index"
@@ -25,6 +22,7 @@
 import ClickerExample from './ClickerExample.vue'
 import ModalExample from './ModalExample.vue'
 import ToDoExample from './ToDoExample.vue'
+// import {tsParticles} from "tsparticles";
 export default {
   components: { ModalExample, ToDoExample, ClickerExample},
     data(){
@@ -47,11 +45,10 @@ html, body {
   width: 100%;
   height:100%;
 }
-
 body {
     background: linear-gradient(-45deg, #bd0101, #5b46d3, #a7cc04, #039045 );
-    background-size: 105% 1%;
-    animation: gradient 5s ease infinite;
+    background-size: 150% 200%;
+    animation: gradient 9s ease infinite;
 }
  
 @keyframes gradient {
@@ -61,8 +58,10 @@ body {
     50% {
         background-position: 100% 50%;
     }
+
     100% {
-        background-position: 0% 50%;
+        background-position: 20% 50%;
     }
 }
+
 </style>

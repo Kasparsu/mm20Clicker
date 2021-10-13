@@ -3,7 +3,6 @@
 <button class="upgrades" @click.prevent="playSound('http://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3')" @click="autoClick" :disabled="clicks<cost">{{name}} ({{cps}} cps) 
    {{cost}} coins</button>
 
-<!-- <img src="bank_icon.png"> -->
 
 
 </template>

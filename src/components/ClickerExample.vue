@@ -3,12 +3,13 @@
   <section class="section">
         <button class="button is-warning is-large" @click="clicks++" @click.prevent="
         playSound('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a')" >
-        <img src="https://previews.dropbox.com/p/thumb/ABQZgIDq4djH3Kv6Qg2qAJhyEZtoMabSCty3GlKHymEHaWG8Iyrz4FlsJLljW96kYfYgljaZvlfejm_Yv4MjgJ7vAObw0s6VUY_Y0bruxhCJJE17_40ar7_oRMSFI8dAHDDP0EHZXjKt6bow_ijRmWvSmf-Q5iubIT-TPa5PJMjgzpJnfbs8w3t5u05f4rr6QYcfKwkYvlK7U9ar_GtZePOlpWginae3SjSTNZxx8jN3nw6nt2HhPgqT5JK2PvyxfG-CFxaO4wrJpgS4wEGcCSdEoOqBCMx-fMqUvJHbgmrZkiy6V9WBOhbJ5BV5EW39M9OcWlxAbaUvBYtG_q41mbKn7HPjgUmyYP4Vz4zrhe1LdA/p.png" alt="dog" width="200" height="200"></button>
+        <img src="../assets/coin-pound.png" alt="dog" width="200" height="200"></button>
         
 
 
-        <h5 class="is-size-3">Coin 收刺猬 COLLECT<img src="https://previews.dropbox.com/p/thumb/ABWvrpmtBT5F1PxAIFdhINBA6aFA6fw4lhc0II4LXzX_AJuG_TqEQm2pglXRBzTEhurzqaK4qH9bNaHVl5nhdy0oz7ZWS6JKm35ygYqmrCwikHtBW89tzNiDG00nVzieaNsD9PgHIKKQk0EU2iol8dBl-o2SqkVItuIFDR8xbkFRbvLoz4pu4_fbTPDsJrgnomoGKdLYadCX_e4GhXRW4MZKl3wJXS8Oizinh5QKH1XRCA7bDyBpHO4tchzwqZejc4vtWo4ib_LX107IIIhUd4fErUtxi823hGtjoRjTJg4BIkc62ZelS4mPvaIKxyN-xZUtzNVCelyTi_cYvrM-Y_G6OpHPDf4IVznY7hPeLet3tg/p.png" alt="#1" width="40" height="50"></h5>  
+        <h5 class="is-size-2">Coin 收刺猬 COLLECT<img src="../assets/mehike.png" alt="#1" width="40" height="50"></h5>  
         <h4 class="is-size-4">You have {{displayClicks}} coins!</h4>  
+        <h4 class="is-size-4">You get {{displayCps}} coins per second!</h4>  
         <auto-click 
         v-for="(auto,index) in autoClickers"
         :key="index"
@@ -22,19 +23,11 @@
 
   </section>
 
-
-
-
-
-
-
-
-
 </template>
 
 <script>
 
-
+ 
 import AutoClick from './AutoClick.vue';
 export default {
 components: {  AutoClick },
@@ -54,7 +47,10 @@ components: {  AutoClick },
                 {name: 'Coin trickle', cost: 100, cps:1.25},
                 {name: 'Mining', cost: 700, cps:100},
                 {name: 'Bank', cost: 1200, cps:200},
-                
+                {name: 'Factory', cost: 2000, cps:500},
+                {name: 'Factory 2', cost: 30000, cps:500},
+                {name: 'Factory 3', cost: 50000, cps:500},
+                 
 
             ]
         }
@@ -64,6 +60,7 @@ components: {  AutoClick },
                 this.clicks -= this.autoClickers[index].cost;
                 this.cps += this.autoClickers[index].cps;
                 this.autoClickers[index].cost += Math.ceil(this.autoClickers[index].cost/10);
+
          },
           
     playSound (sound) {
@@ -77,8 +74,15 @@ components: {  AutoClick },
     computed: {
         displayClicks(){
             return this.clicks.toFixed(1);
+
+        },
+                displayCps(){
+            return this.cps.toFixed(1);
+
         }
-    }
+        
+    },
+
 
 }
 </script>
@@ -91,7 +95,7 @@ components: {  AutoClick },
   position: relative;
   top: 60px;
   left: 40%;
-  cursor: url("https://previews.dropbox.com/p/thumb/ABR1ciUSqke541wxgG1-f3VsBBEld3PLXWI_O8aKsF2_6vjItufldPNNRJ3EEuVE3Palwe_dQquWRM2NLf9QdR36VFbgk9xEwqOYeDxOXOV0qqHk2rS8adl3k83HkRuMYrpIiyvCrhv5KZSGkobM0jJBV_D7XorEuOwl_9gl8mTRKLdUWec_PAqqDTqnLwFnB3V5kVGQGymLUBpML4-OjujY0krnsdkpyAxFrYT70LpiAgvMFMBnS3QI5vQ1ZyrETy1YRfpU5TyCyYv78I0tfFnAgqg466_z6IloBq_uSTXQQkLqyr7hX3sI-1U4VkeNGvtqzhm1W_S4RjL4-5sPqHMvAz7J_J9DCPdaNlzicNuXFw/p.png?fv_content=true&size_mode=5"), auto;	
+  cursor: url("../assets/coinpile.png"), auto;	
 
 }
 h4.is-size-4{
@@ -100,9 +104,10 @@ h4.is-size-4{
     position: relative;
     color:rgb(0, 0, 255);
     border: 2px solid rgb(231, 198, 198);
+    margin-top:5px;
     
 }
-h5.is-size-3{
+h5.is-size-2{
     top:2px;
     position:absolute;
     color:red;
