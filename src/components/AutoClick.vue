@@ -2,6 +2,7 @@
   <button class="button is-warning" @click="autoClick" :disabled="clicks<cost">
       {{name}} ({{cps}} clicks per second) cost: {{cost}} clicks
   </button>
+  
 </template>
 
 <script>
