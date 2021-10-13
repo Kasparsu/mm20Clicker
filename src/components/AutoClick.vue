@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    props: ['cost', 'cps', 'name', 'clicks', 'index'],
+    props: ['cost', 'cps', 'name', 'clicks', 'index', 'helpingHand'],
     methods: {
         autoClick(){
             this.$emit('clicked', this.index);
