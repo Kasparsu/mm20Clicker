@@ -1,18 +1,17 @@
 <template>
-  <button class="button is-danger" @click="autoClick" :disabled="clicks<cost">
-      {{name}} (increases deletion per click by {{clickrate}} and {{cps}} deletes per second) cost: {{cost}} deletes
+  <button class="glowac" @click="autoClick" :disabled="clicks<cost">
+      {{name}} (ERASES {{clickrate}} extra times and ERASES +{{cps}} per second) cost: {{cost}} Erasures
   </button>
-  
 </template>
 
 <script>
 export default {
-    props: ['cost', 'clickrate', 'cps', 'name', 'clicks', 'index'],
+    props: ['cost', 'prestige','lodify', 'clickrate', 'diy', 'cps', 'name', 'clicks', 'index'],
     methods: {
         autoClick(){
             this.$emit('clicked', this.index);
         },
-        summoner() {
+        clickRate() {
             this.$emit('clicked', this.index);
         },
     }
@@ -20,8 +19,37 @@ export default {
 </script>
 
 <style>
-.button.is-danger{
-    margin-right: 10px;
+.glowac{
+    height:40px;
+    margin-right: 100px;
     margin-top: 10px;
+    border-radius: 12px;
+    background-color: red;
+    color: black;
+    font-family:fantasy;
+    font-size:15px;
+    animation-name: upgradeanim;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes upgradeanim{
+  0%   {color: black; background-color:red; }
+  100%  {color: red;background-color:black; }
+}
+.glowac:hover {
+    background-color: rgb(255, 136, 0);
+    animation-name: upgradeanim2;
+}
+@keyframes upgradeanim2 {
+  0%   {color:red;}
+  100%  {color:black;}
+}
+.glowac:disabled {
+    background-color: darkgray;
+    color: gray;
+    animation-name: nothing;
 }
 </style>

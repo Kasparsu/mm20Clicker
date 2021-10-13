@@ -1,6 +1,6 @@
 <template>
-  <button class="glowcr button is-danger" @click="ClickRate" :disabled="clickrate <= 10">
-      {{name}}  (Reduces ERASURE RATE by {{clickrate}} in exchange for +{{cps}}) ERASURES per second. Will not be available if ERASURE RATE is 10 or under.) cost: {{cost}} Erasures
+  <button class="glow button is-danger" @click="clickrate = 1, cps = 0, clicks = 0" :disabled="clickrate <= 10">
+      {{name}}  (Prestige and Reset your ERASURES, ERASURE RATES and ERASES per second in exchange for increased ERASURE RATE and ERASURES per second per upgrade)
   </button>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
     props: ['cost', 'prestige', 'clickrate', 'cps', 'name', 'clicks', 'index'],
     methods: {
-        clickRate() {
+        Pres() {
             this.$emit('clicked', this.index);
         },
     }
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style>
-.glowcr{
+.glow{
     margin-right: 100px;
     margin-top: 10px;
     background-color: red;
