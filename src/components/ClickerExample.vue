@@ -68,7 +68,12 @@ components: {  AutoClick },
         var audio = new Audio(sound);
         audio.play();
       }
-    }  
+    },
+    
+    makeParticle() {
+
+        lol
+    }
 
     },
     computed: {
