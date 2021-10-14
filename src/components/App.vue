@@ -19,21 +19,17 @@
 
 <script>
 import ClickerExample from './ClickerExample.vue'
-import ModalExample from './ModalExample.vue'
-import ToDoExample from './ToDoExample.vue'
 
 export default {
-  components: { ModalExample, ToDoExample, ClickerExample},
+  components: {ClickerExample},
     data(){
       return {
         active: 0,
         items: [
-          {title:'Clicker Example', componentName:'ClickerExample'},
-          {title:'Modal Example', componentName:'ModalExample'},
-          {title:'ToDo Example', componentName:'ToDoExample'},
+          {title:'Shrek Clicker', componentName:'ClickerExample'}
         ]
       }
-    }
+    } 
 }
 </script>
 
