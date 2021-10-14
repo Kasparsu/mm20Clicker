@@ -1,10 +1,7 @@
 <template>
 <div>
   <div class="tabs is-centered is-large">
- <VueRain :rainSpeed="1000" :rainFade="30">
-    <!-- Rendering water drop emoji using slots-->
-    <div><p>&#128167;</p></div>
-  </VueRain>
+
     <ul>
       <li v-for="(item,index) in items"
       :key="index"
@@ -25,7 +22,8 @@
 import ClickerExample from './ClickerExample.vue'
 import ModalExample from './ModalExample.vue'
 import ToDoExample from './ToDoExample.vue'
-// import {tsParticles} from "tsparticles";
+
+
 export default {
   components: { ModalExample, ToDoExample, ClickerExample},
     data(){

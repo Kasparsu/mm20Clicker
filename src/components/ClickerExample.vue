@@ -1,10 +1,10 @@
 <template>
   
   <section class="section">
-        <button class="button is-warning is-large" @click="clicks++" @click.prevent="
-        playSound('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a')" >
+        <button class="button is-warning is-large" @click="[ clicks++, resetTimer() ]"  @click.prevent="
+        playSound('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a')">
         <img src="../assets/coin-pound.png" alt="dog" width="200" height="200"></button>
-        
+
 
 
         <h5 class="is-size-2">Coin 收刺猬 COLLECT<img src="../assets/mehike.png" alt="#1" width="40" height="50"></h5>  
@@ -29,14 +29,16 @@
 
  
 import AutoClick from './AutoClick.vue';
+
 export default {
 components: {  AutoClick },
     mounted(){
         setInterval(()=>{
             this.clicks += this.cps;
-
+            
         },1000);
     },
+
     data(){
         return{
             clicks: 400,
@@ -60,7 +62,6 @@ components: {  AutoClick },
                 this.clicks -= this.autoClickers[index].cost;
                 this.cps += this.autoClickers[index].cps;
                 this.autoClickers[index].cost += Math.ceil(this.autoClickers[index].cost/10);
-
          },
           
     playSound (sound) {
@@ -68,14 +69,15 @@ components: {  AutoClick },
         var audio = new Audio(sound);
         audio.play();
       }
-    },
-    
-    makeParticle() {
-
-        lol
     }
+},
 
-    },
+
+
+            
+
+
+
     computed: {
         displayClicks(){
             return this.clicks.toFixed(1);
@@ -83,13 +85,12 @@ components: {  AutoClick },
         },
                 displayCps(){
             return this.cps.toFixed(1);
-
         }
-        
-    },
+},
 
 
-}
+    }
+
 </script>
 
 <style>
@@ -101,6 +102,15 @@ components: {  AutoClick },
   top: 60px;
   left: 40%;
   cursor: url("../assets/coinpile.png"), auto;	
+}
+
+.button.is-warning.is-large:active {
+  border-radius: 50%;
+  padding: 150px 53px;
+  position: relative;
+  top: 60px;
+  left: 40%;
+  cursor: url("../assets/coinpile.png"), auto;  
 
 }
 h4.is-size-4{
@@ -118,4 +128,16 @@ h5.is-size-2{
     color:red;
 }
 
+.coins{
+    width:20px;
+    height:20px;
+    background: url("../assets/coin-pound.png")
+}
+
+@keyframes mover {
+  0% { top: 0; left: 0; }
+  30% { top: 50px; }
+  68%, 72% { left: 50px; }
+  100% { top: 100px; left: 100%; }
+}
 </style>

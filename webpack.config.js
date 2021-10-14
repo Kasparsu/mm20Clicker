@@ -42,6 +42,10 @@ module.exports = {
           type: 'asset/resource',
         },
     ],
+
+
+    
+
   },
   plugins: [
 
