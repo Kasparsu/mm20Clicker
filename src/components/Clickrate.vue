@@ -1,12 +1,12 @@
 <template>
-  <button class="glowcr button is-danger" @click="ClickRate" :disabled="clickrate <= 10">
+  <button class="glowac" @click="clickRate" :disabled="clickrate <= 10 || clicks < cost">
       {{name}}  (Reduces ERASURE RATE by {{clickrate}} in exchange for +{{cps}}) ERASURES per second. Will not be available if ERASURE RATE is 10 or under.) cost: {{cost}} Erasures
   </button>
 </template>
 
 <script>
 export default {
-    props: ['cost', 'prestige', 'clickrate', 'cps', 'name', 'clicks', 'index'],
+    props: ['cost', 'prestige', 'clickrate', 'diy', 'cps', 'name', 'clicks', 'index'],
     methods: {
         clickRate() {
             this.$emit('clicked', this.index);
@@ -16,19 +16,4 @@ export default {
 </script>
 
 <style>
-.glowcr{
-    margin-right: 100px;
-    margin-top: 10px;
-    background-color: red;
-    animation-name: example;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-}
-
-@keyframes example {
-  0%   {background-color:red;}
-  100%  {background-color:black;}
-}
 </style>

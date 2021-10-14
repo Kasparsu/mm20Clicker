@@ -3,7 +3,7 @@
         <button class="ERASE" @click="do_click" :disabled="clickrate <=0" width="500px">
             ERASE
         </button>
-
+<h4 class="Delete-display">Choose an option</h4>
 <div class="YourselfBTN">
         <button class="Yourself" @click="activate_yourself" :disabled="diy <=0">
             Do it yourself
@@ -11,7 +11,7 @@
 </div>
 
 <div class="LodifyBTN">
-        <button class="lodify" @click="activate_lodify" :disabled="lodify <=0">
+        <button class="lodify" @click="activate_lodify" :disabled="diy <=0">
             Let others do it for you
         </button>
       </div>
@@ -22,28 +22,27 @@
         <h5 class="Delete-note">You have a lot of Erasing to do!</h5>  
         <auto-click 
         v-for="(auto,index) in autoClickers"
-        :key="index"
+        :key="'auto-'+index"
         :name="auto.name"
         :cps="auto.cps"
         :cost="auto.cost"
         :index="index"
         :clickrate="auto.clickrate"
         :clicks="clicks"
-        @clicked="autoClick"
-        >
+        :diy="diy"
+        @clicked="autoClick">
         </auto-click>
-        <click-rate
-        v-for="(auto,index) in clickRate"
-        :key="index"
+        <clickrate 
+        v-for="(auto,index) in clickRates"
+        :key="'rate-'+index"
         :name="auto.name"
         :cps="auto.cps"
         :cost="auto.cost"
         :index="index"
         :clickrate="auto.clickrate"
-        :prestige="auto.prestige"
         :clicks="clicks"
-        @clicked="ClickRate">
-        </click-rate>
+        @clicked="clickRate">
+        </clickrate>
   </section>
 </template>
 
@@ -52,12 +51,7 @@ import Clickrate from './Clickrate.vue';
 import AutoClick from './AutoClick.vue';
 import Prestige from './Prestige.vue';
 export default {
-beforeCreate () {
-    document.querySelector('body').setAttribute('style', 'background:#000')
-},
-beforeDestroy () {
-    document.querySelector('body').setAttribute('style', '')
-},
+
   components: {Prestige, Clickrate, AutoClick },
     mounted(){
         setInterval(()=>{
@@ -67,10 +61,9 @@ beforeDestroy () {
     data(){
         return {
             clicks: 1000,
-            clickrate: 1,
+            clickrate: 0,
             cps: 0,
             diy: 1,
-            lodify: 1,
             prestige: 0,
             cost: 10,
             autoClickers: [
@@ -87,11 +80,14 @@ beforeDestroy () {
                 {name: 'Ask Mother of God to Erase', cost: 100000000000, clickrate: 0, cps:1000000000},
                 {name: 'YOU', cost: 1000000000000, clickrate: 0, cps:10000000000},
                 {name: 'Extra Erase', cost: 100, clickrate: 0.2, cps: 0.2},
-                {name: 'Let them do the job for you', cost: 50, clickrate: -0.2, cps: 2},
                 {name: 'The power', cost: 50, clickrate: 0.5, cps: -3},
                 {name: 'The power', cost: 500, clickrate: 5, cps: -30},
-                {name: 'MOVE ONTO THE NEXT', cost:100000000000000, clickrate:1, cps: 0},
+                {name: 'MOVE ONTO THE NEXT', cost:1000, clickrate:1, cps: 0},
+                
                 ],
+            clickRates: [
+                {name: 'Let them do the job for you', cost: 50, clickrate: 0.2, cps: 2},
+            ]
         }
     },
     methods: {
@@ -104,26 +100,23 @@ beforeDestroy () {
         clickRate(index){
            this.clicks -= this.autoClickers[index].cost; 
            this.cps += this.autoClickers[index].cps;
-           this.clickrate += this.autoClickers[index].clickrate;
-           this.autoClickers[index].cost += Math.ceil(this.autoClickers[index].cost/7);
+           this.clickrate -= this.autoClickers[index].clickrate;
+           this.clickRates[index].cost += Math.ceil(this.clickRates[index].cost/7);
         },
-        do_click: function() {
+        do_click(){
            this.clicks += this.clickrate;
         },
-        disable: true,
-        activate_yourself: function() {
+        activate_yourself() {
             this.clickrate = 3;
             this.cps = 0;
             this.diy = 0;
-            this.lodify = 0;
         },
-         activate_lodify: function() {
+         activate_lodify() {
             this.clickrate = 0;
             this.cps = 16;
             this.diy = 0;
-            this.lodify = 0;
         },
-        Warningmsg: function() {
+        Warningmsg() {
             var x = document.getElementById("myDIV");
             if (x.innerHTML === "Hello") {
              x.innerHTML = "Swapped text!";
@@ -204,6 +197,7 @@ h4.Delete-display{
       text-align: center;
       font-size: 95px;
       transform: translateY(20px);
+      margin-bottom:10px;
       height: 190px;
       width: 490px;
   }
@@ -277,7 +271,7 @@ position:relative;
   .lodify:disabled {
       display: none;
   }
-.html .body {
+body {
     margin:0;
     padding:0;
     background-color:black;

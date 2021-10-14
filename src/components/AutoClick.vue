@@ -1,17 +1,16 @@
 <template>
-  <button class="glowac" @click="autoClick" :disabled="clicks<cost">
+<div class="buttons">
+  <button class="glowac" @click="autoClick" :disabled="diy == 1 || clicks < cost">
       {{name}} (ERASES {{clickrate}} extra times and ERASES +{{cps}} per second) cost: {{cost}} Erasures
   </button>
+</div>
 </template>
 
 <script>
 export default {
-    props: ['cost', 'prestige','lodify', 'clickrate', 'diy', 'cps', 'name', 'clicks', 'index'],
+    props: ['cost', 'prestige', 'clickrate', 'diy', 'cps', 'name', 'clicks', 'index'],
     methods: {
         autoClick(){
-            this.$emit('clicked', this.index);
-        },
-        clickRate() {
             this.$emit('clicked', this.index);
         },
     }
