@@ -1,7 +1,7 @@
-<template>
+'"<template>
     <div>
         <input type="text" v-model="message" @keyup.enter="clicked">
-        <button @click="clicked">Click me!</button>
+        <img src="shrek.png" >
 
         <item-list :items="items" title="All items" tag="all"></item-list>
         <item-list :items="doneItems" title="Done items" tag="done"></item-list>
