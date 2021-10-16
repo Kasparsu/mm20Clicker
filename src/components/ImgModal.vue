@@ -1,4 +1,6 @@
 <template>
+
+
   <modal @close="$emit('close')">
         <p class="image is-4by3">
           <img :src="src" alt="">
@@ -15,5 +17,4 @@ export default {
 </script>
 
 <style>
-
 </style>

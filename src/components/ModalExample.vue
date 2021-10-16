@@ -1,20 +1,20 @@
 <template>
   <section class="section">
     <div class="container">
-      <button class="button is-primary" @click="isActive=true">Click me for Cat!</button>
-      <button class="button is-warning" @click="isActive2=true">Click me for Bear!</button>
-      <button class="button is-link" @click="isActive3=true">Click me for Card!</button>
+      <button class="button is-primary" @click="isActive=true">Kitty</button>
+      <button class="button is-warning" @click="isActive2=true">bacon!</button>
+      <button class="button is-link" @click="isActive3=true">Text card</button>
 
       <img-modal 
       v-if="isActive"
       @close="isActive=false"
-      src="https://placekitten.com/1280/960">
+      src="https://placekitten.com/400/960">
       </img-modal>
 
       <img-modal 
       v-if="isActive2"
       @close="isActive2=false"
-      src="https://placebear.com/1280/960">
+      src="https://baconmockup.com/600/600">
       </img-modal>
       
       <modal 
@@ -23,7 +23,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+              Lolly texty Saires
             </div>
           </div>
         </div>
@@ -48,5 +48,4 @@ export default {
 </script>
 
 <style>
-
 </style>

@@ -37,10 +37,22 @@ module.exports = {
           test: /\.vue$/,
           use: ['vue-loader']
         },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
     ],
+
+
+    
+
   },
   plugins: [
+
       new HtmlWebpackPlugin({ template: './src/index.html'}),
       new VueLoaderPlugin(),
-  ],
+    ],
 };
+
+
+//oi
