@@ -1,15 +1,16 @@
 <template>
   
   <section class="section">
-        <button class="button is-warning is-large" @click="[ clicks++, resetTimer() ]"  @click.prevent="
+    <button class="boost1" @click="[ ClicksBoost1(), clicks -= 300 ]"  @click.prevent="playSound('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a')">I'm bad at clickers</button>
+        <button class="button is-warning is-large" @click="[ clicks++ ]"  @click.prevent="
         playSound('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a')">
         <img src="../assets/coin-pound.png" alt="dog" width="200" height="200"></button>
-
-
+            
+            
 
         <h5 class="is-size-2">Coin 收刺猬 COLLECT<img src="../assets/mehike.png" alt="#1" width="40" height="50"></h5>  
         <h4 class="is-size-4">You have {{displayClicks}} coins!</h4>  
-        <h4 class="is-size-4">You get {{displayCps}} coins per second!</h4>  
+        <h4 class="is-size-4">You gain {{displayCps}} coins per second!</h4>  
         <auto-click 
         v-for="(auto,index) in autoClickers"
         :key="index"
@@ -21,6 +22,15 @@
         @clicked="autoClick">
         </auto-click>
 
+        
+        <click-boost
+        v-for="(auto,index) in ClickBoosters"
+        :key="index"
+        :index="index"
+        :clicks="clicks"
+        @clicked="ClickBoost">
+        </click-boost>
+        
   </section>
 
 </template>
@@ -29,13 +39,12 @@
 
  
 import AutoClick from './AutoClick.vue';
-
+import ClickBoost from './ClickBoost.vue';
 export default {
-components: {  AutoClick },
+components: {  AutoClick, ClickBoost },
     mounted(){
         setInterval(()=>{
             this.clicks += this.cps;
-            
         },1000);
     },
 
@@ -44,6 +53,7 @@ components: {  AutoClick },
             clicks: 400,
             cps: 0,
             cost: 10,
+
             autoClickers:[
                 {name: 'Boost', cost: 10, cps:0.1},
                 {name: 'Coin trickle', cost: 100, cps:1.25},
@@ -52,9 +62,8 @@ components: {  AutoClick },
                 {name: 'Factory', cost: 2000, cps:500},
                 {name: 'Factory 2', cost: 30000, cps:500},
                 {name: 'Factory 3', cost: 50000, cps:500},
-                 
 
-            ]
+            ],
         }
     },
     methods: {
@@ -69,8 +78,23 @@ components: {  AutoClick },
         var audio = new Audio(sound);
         audio.play();
       }
-    }
-},
+    },
+
+    
+ClicksBoost1(){
+ 
+
+let boostTimer = setInterval(() => 
+this.cps += 30, 100);
+// const boostbtn = document.getElementsByClass("boost1");
+// // boostbtn.disabled = true; boost1.disabled = false ––> 
+
+
+// stop run
+setTimeout(() => { clearInterval(boostTimer), this.cps -= 900; }, 3000);
+  
+  }
+  },
 
 
 
@@ -95,12 +119,28 @@ components: {  AutoClick },
 
 <style>
 
+.boost1{
+  left: 20px;
+   top: -95px;
+   height: 45px;
+   width: 240px;
+   position: relative;
+   background:crimson;
+   color: blue;
+   font-size: 19px;
+   }
+.boost1:disabled{
+  opacity: 30%;
+  background: red;
+}
+
+
 .button.is-warning.is-large {
   border-radius: 50%;
   padding: 150px 50px;
   position: relative;
   top: 60px;
-  left: 40%;
+  left: 25%;
   cursor: url("../assets/coinpile.png"), auto;	
 }
 
@@ -109,7 +149,7 @@ components: {  AutoClick },
   padding: 150px 53px;
   position: relative;
   top: 60px;
-  left: 40%;
+  left: 25%;
   cursor: url("../assets/coinpile.png"), auto;  
 
 }
